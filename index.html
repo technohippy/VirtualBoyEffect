@@ -27,7 +27,19 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+var canvas = renderer.domElement;
+canvas.addEventListener('click', function() {
+  canvas.webkitRequestFullScreen();
+});
+
 var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
+
+window.addEventListener('resize', onWindowResize, false);
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  virtualBoyEffect.setSize(window.innerWidth, window.innerHeight);
+}
 
 var material = new THREE.MeshLambertMaterial({color:0xffccff});
 var geometry = new THREE.TorusKnotGeometry(0.1, 0.02, 200, 20, 4, 5);
