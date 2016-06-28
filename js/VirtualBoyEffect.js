@@ -43,7 +43,7 @@ THREE.VirtualBoyEffect = function (renderer) {
   var _stereo = new THREE.StereoCamera();
   _stereo.aspect = 0.5;
 
-  var _params = { minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter, format: THREE.RGBAFormat };
+  var _params = {minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter, format: THREE.RGBAFormat};
 
   var _renderTarget = new THREE.WebGLRenderTarget(512, 512, _params);
   _renderTarget.scissorTest = true;
@@ -72,23 +72,23 @@ THREE.VirtualBoyEffect = function (renderer) {
   var length = positions.length / 3;
 
   for (var i = 0, l = positions2.length / 3; i < l; i ++) {
-    vector.x = positions2[ i * 3 + 0 ];
-    vector.y = positions2[ i * 3 + 1 ];
+    vector.x = positions2[i * 3 + 0];
+    vector.y = positions2[i * 3 + 1];
 
     var dot = vector.dot(vector);
     var scalar = 1.5 + (distortion.x + distortion.y * dot) * dot;
     var offset = i < length ? 0 : 1;
 
-    positions2[ i * 3 + 0 ] = (vector.x / scalar) * 1.5 - 0.5 + offset;
-    positions2[ i * 3 + 1 ] = (vector.y / scalar) * 3.0;
+    positions2[i * 3 + 0] = (vector.x / scalar) * 1.5 - 0.5 + offset;
+    positions2[i * 3 + 1] = (vector.y / scalar) * 3.0;
 
-    uvs2[ i * 2 ] = (uvs2[ i * 2 ] + offset) * 0.5;
+    uvs2[i * 2] = (uvs2[i * 2] + offset) * 0.5;
   }
 
   geometry.attributes.position.array = positions2;
   geometry.attributes.uv.array = uvs2;
 
-  var material = new THREE.MeshBasicMaterial({ map: _renderTarget });
+  var material = new THREE.MeshBasicMaterial({map: _renderTarget});
   var mesh = new THREE.Mesh(geometry, material);
   _scene.add(mesh);
 

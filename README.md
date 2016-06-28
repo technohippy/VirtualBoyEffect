@@ -38,7 +38,7 @@ Construct the effect with a WebGLRenderer instance:
 var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
 ```
 
-Render by using a virtualBoyEffect instance:
+Render by using the instance:
 
 ```javascript
 function render() {
