@@ -3,6 +3,8 @@ VirtualBoyEffect for Three.js
 
 This effect makes your scene into something like a Virtual Boy application.
 
+<img src="https://raw.githubusercontent.com/technohippy/VirtualBoyEffect/master/screenshot.png" width="400">
+
 ## Description
 
 [The Virtual Boy](https://en.wikipedia.org/wiki/Virtual_Boy) is an legendary video game console developed by Nintendo.
@@ -16,7 +18,7 @@ https://technohippy.github.io/VirtualBoyEffect
 
 ## Usage
 
-Include required libs
+Include required libs:
 
     <script src="js/three.js"></script>
     <script src="js/EffectComposer.js"></script>
@@ -28,11 +30,11 @@ Include required libs
     <script src="js/VignetteShader.js"></script>
     <script src="js/VirtualBoyEffect.js"></script>
 
-Construct with a WebGLRenderer instance
+Construct with a WebGLRenderer instance:
 
     var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
 
-Render by using a virtualBoyEffect instance
+Render by using a virtualBoyEffect instance:
 
     function render() {
       requestAnimationFrame( render );
