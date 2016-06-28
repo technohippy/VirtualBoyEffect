@@ -21,18 +21,18 @@
 <script>
   // Our Javascript will go here.
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
 var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
 
-var material = new THREE.MeshLambertMaterial( { color:0xffccff } );
+var material = new THREE.MeshLambertMaterial({color:0xffccff});
 var geometry = new THREE.TorusKnotGeometry(0.1, 0.02, 200, 20, 4, 5);
-var mesh = new THREE.Mesh( geometry, material );
-scene.add( mesh );
+var mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
 
 var light = new THREE.DirectionalLight();
 light.position.set(1, 2, 3);
@@ -47,11 +47,11 @@ camera.position.z = 0.3;
 camera.lookAt(mesh.position);
 
 function render() {
-  requestAnimationFrame( render );
+  requestAnimationFrame(render);
   mesh.rotation.x += 0.01;
   mesh.rotation.y += 0.01;
 
-  virtualBoyEffect.render( scene, camera );
+  virtualBoyEffect.render(scene, camera);
 }
 render();
 </script>
