@@ -50,7 +50,7 @@ render();
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[MIT](https://github.com/technohippy/VirtualBoyEffect/blob/master/LICENCE.txt)
 
 ## Author
 
