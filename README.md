@@ -7,7 +7,7 @@ This effect makes your scene into something like a Virtual Boy application.
 
 ## Description
 
-[The Virtual Boy](https://en.wikipedia.org/wiki/Virtual_Boy) is an legendary video game console developed by Nintendo.
+[The Virtual Boy](https://en.wikipedia.org/wiki/Virtual_Boy) is a legendary video game console developed by Nintendo.
 By using this effect and the Google Cardboard, you can virtualboyize your three.js application.
 
 Note that this effect is built on codes from the deprecated CardboardEffect so there may be same issues as the effect.
@@ -20,27 +20,33 @@ https://technohippy.github.io/VirtualBoyEffect
 
 Include required libs:
 
-    <script src="js/three.js"></script>
-    <script src="js/EffectComposer.js"></script>
-    <script src="js/FilmShader.js"></script>
-    <script src="js/FilmPass.js"></script>
-    <script src="js/RenderPass.js"></script>
-    <script src="js/CopyShader.js"></script>
-    <script src="js/ShaderPass.js"></script>
-    <script src="js/VignetteShader.js"></script>
-    <script src="js/VirtualBoyEffect.js"></script>
+```html
+<script src="js/three.js"></script>
+<script src="js/EffectComposer.js"></script>
+<script src="js/FilmShader.js"></script>
+<script src="js/FilmPass.js"></script>
+<script src="js/RenderPass.js"></script>
+<script src="js/CopyShader.js"></script>
+<script src="js/ShaderPass.js"></script>
+<script src="js/VignetteShader.js"></script>
+<script src="js/VirtualBoyEffect.js"></script>
+```
 
-Construct with a WebGLRenderer instance:
+Construct the effect with a WebGLRenderer instance:
 
-    var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
+```javascript
+var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
+```
 
 Render by using a virtualBoyEffect instance:
 
-    function render() {
-      requestAnimationFrame( render );
-      virtualBoyEffect.render( scene, camera );
-    }
-    render();
+```javascript
+function render() {
+  requestAnimationFrame(render);
+  virtualBoyEffect.render(scene, camera);
+}
+render();
+```
 
 ## Licence
 
