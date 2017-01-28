@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>VirtualBoyEffect</title>
+  <style>
+    body { margin: 0; }
+    canvas { width: 100%; height: 100% }
+  </style>
+</head>
+<body>
+<script src="js/three.js"></script>
+<script src="js/EffectComposer.js"></script>
+<script src="js/FilmShader.js"></script>
+<script src="js/FilmPass.js"></script>
+<script src="js/RenderPass.js"></script>
+<script src="js/CopyShader.js"></script>
+<script src="js/ShaderPass.js"></script>
+<script src="js/VignetteShader.js"></script>
+<script src="js/VirtualBoyEffect.js"></script>
+<script>
+  // Our Javascript will go here.
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+var canvas = renderer.domElement;
+canvas.addEventListener('click', function() {
+  canvas.webkitRequestFullScreen();
+});
+
+var virtualBoyEffect = new THREE.VirtualBoyEffect(renderer);
+
+window.addEventListener('resize', onWindowResize, false);
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  virtualBoyEffect.setSize(window.innerWidth, window.innerHeight);
+}
+
+var material = new THREE.MeshLambertMaterial({color:0xffccff});
+var geometry = new THREE.TorusKnotGeometry(0.1, 0.02, 200, 20, 4, 5);
+var mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+var light = new THREE.DirectionalLight();
+light.position.set(1, 2, 3);
+scene.add(light);
+
+light = new THREE.DirectionalLight();
+light.position.set(-1, -2, -3);
+scene.add(light);
+
+camera.position.z = 2;
+camera.position.z = 0.3;
+camera.lookAt(mesh.position);
+
+function render() {
+  requestAnimationFrame(render);
+  mesh.rotation.x += 0.01;
+  mesh.rotation.y += 0.01;
+
+  virtualBoyEffect.render(scene, camera);
+}
+render();
+</script>
+</body>
+</html>
